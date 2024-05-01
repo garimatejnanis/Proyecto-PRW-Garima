@@ -1,0 +1,488 @@
+*{
+    font-family: 'Times New Roman', Arial; 
+}
+
+/*Cabecera*/
+#cabecera, #cuerpo, #pie {
+    display: none;
+}
+
+#tituloCarritoError #tituloCarritoMensaje{
+    display: none;
+}
+
+.cabecera{
+    height: 15%;
+    width: 100%;
+    background-color: #880E4F;
+    color: #FFFFFF;
+    position: fixed;
+    top: 0; 
+}
+
+.cabecera .row {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #880E4F;
+    color: #FFFFFF;
+}
+
+.cabecera .row a {
+    text-decoration: none;
+    color: #FFFFFF;
+    padding: 10px;
+    display: block;
+}
+
+.cabecera .row a:hover {
+    color: #000000;
+}
+
+.menu-toggle {
+    display: none; 
+    cursor: pointer;
+    margin: 0.5rem;
+}
+
+
+.menu-toggle .line {
+    width: 30px;
+    height: 3px;
+    background-color: #FFFFFF;
+    margin: 5px 0;
+}
+
+/*Para tablet y moviles, para el menu*/
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; 
+    }
+
+    .menuCabecera{
+        display: none;
+    } 
+    
+}
+
+#menu-list {
+    display: none;
+    background-color: #880E4F; 
+}
+
+#menu-list a {
+    display: block;
+    color: #FFFFFF; 
+    text-decoration: none;
+    padding: 10px 0; 
+}
+
+#menu-list a:hover {
+    background-color: #555; 
+}
+
+#menu-list.show-menu {
+    display: block;
+}
+
+.logoCabecera {
+    display: flex;
+    margin-right: auto; 
+}
+
+.cabecera img {
+    max-width: 100px; 
+    height: auto;
+}
+
+.error{
+    color: #D50000;    
+}
+
+.tarjetaCuentaLogin{
+    background-color: #607D8B;
+    color:#FFFFFF;
+    font-weight: bolder;
+}
+
+.tituloCuenta{
+    text-align: center;
+    font-weight: bold;
+}
+
+.colorFondoCuentaLogin{
+    background-color: #607D8B;
+}
+
+.colorBotonCuenta{
+    background-color: #FB8C00;
+    color:#FFFFFF; 
+    display: block; 
+    margin: 0 auto;
+    font-weight: bold;
+}
+
+.colorBotonCuenta:hover{
+    background-color:#F57C00;
+    color:#FFFFFF;
+    font-weight: bold;
+}
+
+.centrado{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+}
+
+.colorBotonLogin{
+    background-color: #FDD835;
+    color:#FFFFFF; 
+    display: block; 
+    margin: 0 auto;
+    font-weight: bold;
+}
+
+.colorBotonLogin:hover{
+    background-color: #FFEA00;
+    font-weight: bold;
+    color:#FFFFFF;
+}
+
+.cerrarCarta{
+    font-size: large;
+    font-weight: normal;
+    width: auto;
+    display: flex;
+    justify-content: end;
+    color: #000000;
+}
+
+.cerrarCarta:hover{
+    color:#FF5722;
+    cursor: pointer;
+}
+
+#cuenta{
+    display: block;
+    position: fixed;
+    top: 50%;
+    right: 50%;
+    bottom: 50%;
+}
+
+#login{
+    display: block;
+    position: fixed;
+    top: 50%;
+    right: 30%;
+    bottom: 50%;
+}
+
+#usuarioError{
+    display: block;
+}
+
+#tablaDatos{
+    display: none;
+    margin: none;
+    padding: none;
+}
+
+#formularioEntrada{
+    display: none;
+}
+
+#tituloCarrito{
+    display: none;
+    font-weight: bold;
+}
+
+/*Cuerpo*/
+.cuerpo{
+    width: 100%;
+    max-width: 1200px;
+    background-color:  #FFFFFF;
+    color: #000000;
+    text-align: justify;
+    margin-top: 125px;
+}
+
+#tituloListaComediante{
+    display: none;
+    font-weight: bold;
+}
+
+#comedianteDatos{
+    display: none;
+}
+
+[id^="comedianteDatos"] img {
+    width: 200px;
+    height: 200px;
+    justify-content: center;
+}
+
+.listaComediante{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 15%;
+}
+
+.FormularioHorizontal {
+    margin-left: auto; 
+    text-align: left;
+    color: #000000;
+    font-weight: bolder;
+}
+
+.FormularioHorizontal .FilaFormulario {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+/* Ajusta el ancho de las columnas */
+.FormularioHorizontal .GrupoFormulario {
+    flex: 1 0 calc(50% - 10px); 
+    margin-right: 20px; 
+}
+
+.FormularioHorizontal .GrupoFormulario:last-child {
+    margin-right: 0;
+}
+
+/*para movil y tablet*/
+@media screen and (max-width: 768px) {
+    .FormularioHorizontal .GrupoFormulario {
+        flex: 1 0 100%; 
+        margin-right: 0; 
+        margin-bottom: 20px; 
+    }
+}
+
+#formulario{
+    display: none;
+}
+
+#tituloFormulario{
+    display: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+#formularioEntrada2{
+    display: none;
+}
+
+#tituloEditar{
+    display: none;
+    font-weight: bold;
+}
+
+#botonComprar{
+    display: none;
+}
+
+
+.colorBotonEntrada{
+    background-color: #7CB342;
+    color:#FFFFFF; 
+    display: block; 
+    font-weight: bold;
+}
+
+.colorBotonEntrada:hover{
+    background-color: #689F38;
+    font-weight: bold;
+    color:#FFFFFF;
+}
+
+.FormularioHorizontal .BotonesFormulario {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content:end;
+    align-items: end;  
+}
+
+.FormularioHorizontal .BGrupoFormulario {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content:end;
+    align-items: end;
+}
+
+.colorBorde:focus {
+    border-color: #33691E; 
+    box-shadow: 0 0 0 0.2rem #AED581; 
+}
+
+.tablaCarrito{
+    text-align: center;
+    
+    font-size: 16px;
+}
+
+.colorTablaTitulo{
+    background-color: #D7CCC8;
+}
+
+.colorBotonEditar{
+    background-color: #0277BD;
+    color:#FFFFFF; 
+    font-weight: bold;
+}
+
+.colorBotonEditar:hover{
+    background-color: #0288D1;
+    color:#FFFFFF; 
+    font-weight: bold;
+}
+
+.colorBotonEliminar{
+    background-color: #D50000;
+    color:#FFFFFF; 
+    font-weight: bold;
+}
+
+.colorBotonEliminar:hover{
+    background-color:#E53935;
+    color:#FFFFFF; 
+    font-weight: bold;
+}
+
+.colorBotonComprar{
+    background-color: #880E4F;
+    color:#FFFFFF; 
+    display: block;
+    font-weight: bold;
+    margin-left: auto;
+}
+
+.colorBotonComprar:hover{
+    background-color: #AD1457;
+    color:#FFFFFF; 
+    font-weight: bold;
+} 
+
+.slider {
+    width: 70%;
+    overflow: hidden;
+    margin: auto;
+}
+
+.slides-container {
+    display: flex;
+    width: 400%; /* 4 imágenes, cada una con el 25% del ancho */
+}
+
+.slides-container img {
+    width: 25%; /* Cada imagen ocupa el 25% del contenedor */
+    height: auto;
+}
+
+.slides-container img:first-child {
+    display: block;
+}
+
+#tituloCuerpo{
+   
+    text-align: center;
+    padding: 10px;
+    color: #333333;
+    font-weight: bold;
+}
+
+#tituloServicio{
+
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+#tipoServicio{
+    text-align: center;
+}
+
+.ImagenesServicio img{
+    width: 200px;
+    height: auto;
+}
+
+.ImagenesServicio{
+    padding: 15px;
+}
+
+.espacioCol{
+    gap: 5%;
+}
+
+.ImagenDescanso  {
+    width: 100%;
+    height: auto;
+    padding: auto;
+}
+/*Pie*/
+.pie{
+    height: 25%;
+    width: 100%;
+    background-color: #424242;
+    color: #E0E0E0;
+}
+
+
+.listaPie{
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.listaPie li{
+    display: inline;
+    margin: 2rem;
+    padding: 0;
+}
+
+.listaPie a{
+    text-decoration: none;
+    color: #E0E0E0;
+    padding: 0;
+    margin: 0;
+}
+
+.listaPie a:hover{
+    color: #FFFFFF;
+}
+
+.lineaHorizontal{
+    height: 1px;
+    margin: 0;
+    padding: 0;
+}
+
+
+.logoPie img{
+    width: 150px;
+    height: auto;
+}
+
+.iconosEspacio{
+    margin: 0;
+    padding: 2px;
+}
+
+/*se usa para imagenes, brightness convierte a 0  con color oscuro y invert lo cambia a blanco*/
+/*no funciona con color*/
+.iconosEspacio a:hover img{
+    filter: brightness(0) invert(1);
+}
+
+.pieIconos{
+    width: 100%;
+    max-width: 1200px;
+}

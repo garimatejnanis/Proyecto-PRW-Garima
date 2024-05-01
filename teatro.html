@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+    <script type="text/javascript" src="teatro.js"></script>
+    <script type="text/javascript" src="cuenta.js"></script>
+    <script type="text/javascript" src="login_logout.js"></script>
+    <script type="text/javascript" src="entrada.js"></script>
+    <script type="text/javascript" src="carrito.js"></script>    
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="teatro.css">   
+    <title>Teatro</title>
+</head>
+
+<body>
+    <div class="container-fluid cabecera" id="cabecera">
+        <div class="row  justify-content-start align-items-center">
+            <div class="col-xl-auto col-lg-auto col-md-auto col-auto logoCabecera">
+                <a href="#"  onclick="cargarContenidoInicio()"><img src="logo.png"></a>
+            </div>
+            <div class="col-xl-auto col-lg-auto col-md-auto col-auto">
+                <div class="menu-toggle">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+            <div class="col-xl-auto col-lg-auto col-md-auto col-auto menuCabecera">
+                <a href="#" onclick="cargarContenidoInicio()">Inicio</a>
+            </div>
+            <div class="col-xl-auto col-lg-auto col-md-auto col-auto menuCabecera">
+                <a href="#"  onclick="return entrada.getInfoComediantes()">Listado de Comediantes</a>
+            </div>
+            <div class="col-xl-auto col-lg-auto col-md-auto col-auto menuCabecera">
+                <a href="#" onclick="return entrada.getInfoEntrada()">Carrito</a>
+            </div>
+            <!--ocultar el correo usuario, en logout y etc-->
+            <div class="col-xl-auto col-lg-auto col-md-auto col-auto  menuCabecera" id="correoUsuario">
+            </div>
+
+            <div class="col-xl-auto col-lg-auto col-md-auto col-auto  menuCabecera">
+                <a href="#" onclick="return relacionCliente.logout()">Logout</a>
+            </div>
+        </div> 
+        
+        <div id="menu-list">
+            <!-- menu tablet y movil -->
+            <a href="#" onclick="cargarContenidoInicio()">Inicio</a>
+            <a href="#" onclick="return entrada.getInfoComediantes()">Listado de Comediantes</a>
+            <a href="#" onclick="return entrada.getInfoEntrada()">Carrito</a>
+            <p id="correoUsuario"></p>
+            <a href="#" onclick="return relacionCliente.logout()">Logout</a>
+        </div>
+    </div>
+
+        <section id="cuenta" class="cuenta">
+            <div class="abs-center centrado">
+                <div class="card-deck">
+                    <div class="card tarjetaCuentaLogin">
+                        <div class="card-header colorFondoCuentaLogin">
+                            <div class="cerrarCarta">
+                                <p class="card-category" onclick="return cliente.cerrarTarjetaCrearCuenta()">X</p>
+                            </div>
+                            <h1 class="card-title tituloCuenta">Crear cuenta</h1>
+                        </div>
+                        <div class="card-body">
+                            <form onsubmit="return cliente.validacion() && cliente.insertCliente()" name="contactForm" method="POST">
+                                <div class="form-group has-label">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" id="nombre" name="nombre" class="form-control nombre" placeholder="Juan">
+                                    <p class="error" id="nombreVal"></p>
+                                </div>
+        
+                                <div class="form-group has-label">
+                                    <label for="apellidos">Apellidos</label>
+                                    <input type="text" id="apellidos" name="apellidos" class="form-control apellidos"  placeholder="Perez">
+                                    <p class="error" id="apellidosVal"></p>
+                                </div>
+        
+                                <div class="form-group has-label">
+                                    <label for="correo">Correo Electrónico</label>
+                                    <input type="email" id="correo" name="correo" class="form-control correo"  placeholder="ejemplo@gmail.com">
+                                    <p class="error" id="correoVal"></p>
+                                </div>
+        
+                                <div class="form-group has-label">
+                                    <label for="contra">Contraseña</label>
+                                    <input type="password" id="contra" name="contra" class="form-control contra"  placeholder="Juan1234">
+                                    <p class="error" id="contrasenaVal"></p>
+                                </div>
+        
+                                <div class="form-group has-label">
+                                    <label for="contra2">Repita la contraseña</label>
+                                    <input type="password" id="contra2" name="contra2" class="form-control contra2" placeholder="Juan1234">
+                                    <p class="error" id="contrasena2Val"></p>
+                                </div>
+        
+                                <button type="submit" class="btn colorBotonCuenta">Registrarse</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> 
+
+        <section id="login" class="login">
+            <div class="abs-center centrado">
+                <div class="card-deck">
+                    <div class="card tarjetaCuentaLogin">
+                        <div class="card-header colorFondoCuentaLogin">
+                            <div class="cerrarCarta">
+                                <p class="card-category" onclick="return relacionCliente.cerrarTarjetaLogin()">X</p>
+                            </div>
+                            <h1 class="card-title tituloCuenta">Iniciar Sesión</h1>
+                        </div>
+                        <div class="card-body">
+                            <form  onsubmit="return relacionCliente.validacion() && relacionCliente.login()" name="contactForm2" method="POST">
+                                <div class="form-group has-label">
+                                    <label for="usuario">Usuario</label>
+                                    <input type="text" id="usuario" name="usuario" class="form-control usuario" placeholder="ejemplo@gmail.com">
+                                    <p class="error" id="usuarioVal"></p>
+                                </div>
+
+                                <div class="form-group has-label">
+                                    <label for="password">Contraseña</label>
+                                    <input type="password" id="password" name="password" class=" form-control password" placeholder="Juan1234">
+                                    <p  class="error" id="passwordVal"></p>
+                                </div>
+                                <p class="error" id="usuarioError"></p>
+                                <button type="submit" class="btn colorBotonLogin">Acceder</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+   
+    <div class="container cuerpo" id="cuerpo">
+       <h1 id="tituloCuerpo" >"Risas Sin Freno": Un Espectáculo de Stand-Up que No Te Puedes Perder</h1>
+        <div class="slider" id="ocultarSlider">
+            <div class="slides-container">
+                <img src="ImagenesSlider/slider1.jpg">
+                <img src="ImagenesSlider/slider2.jpg">
+                <img src="ImagenesSlider/slider3.jpg">
+                <img src="ImagenesSlider/slider4.jpg">
+            </div>
+        </div>
+        <div class="row justify-content-center align-items-center espacioCol" id="ocultarImgServicio">
+            <h2 id="tituloServicio">¿Qué Ofrecemos?</h2>
+            <div class="col-xl-auto col-lg-auto col-md-auto col-auto ImagenesServicio">
+                <img src="ImagenesServicio/servicio1.png">
+                <h3 id="tipoServicio">Venta Online</h3>
+            </div>
+            <div class="col-xl-auto col-lg-auto col-md-auto col-auto ImagenesServicio">
+                <img src="ImagenesServicio/servicio2.png">
+                <h3 id="tipoServicio">Método de Pago</h3>
+            </div>
+        </div>
+        <img src="ImagenDescanso/descanso.png" class="ImagenDescanso" id="ocultarImgDescanso">
+
+        <h1 id="tituloListaComediante">Comediantes</h1>
+        <section id="listaComediante"  class="listaComediante">
+            <div class="row justify-content-between align-items-center" >
+            </div>
+        </section>
+
+        <div id="formulario">
+            <h3 id="tituloFormulario">Rellene el siguiente formulario</h3><br>
+        </div>
+    
+        <form onsubmit="return entrada.validacion() && entrada.insertEntrada()"  name="contactForm3" method="POST" class="horizontal-form FormularioHorizontal" id="formularioEntrada">
+            <div class="form-row FilaFormulario">
+                <div class="form-group has-label col-xl-2 col-lg-2 col-md-2 col-5 GrupoFormulario">
+                    <label for="nombrePersona">Nombre</label>
+                    <input type="text" id="nombrePersona" name="nombrePersona" class="form-control nombrePersona colorBorde" placeholder="Juan">
+                    <p class="error" id="nombrePersonaVal"></p>
+                </div>
+                <div class="form-group has-label col-xl-2 col-lg-2 col-md-2 col-5 GrupoFormulario">
+                    <label for="apellidosPersona">Apellidos</label>
+                    <input type="text" id="apellidosPersona" name="apellidosPersona" class="form-control apellidosPersona colorBorde" placeholder="Perez">
+                    <p class="error" id="apellidosPersonaVal"></p>
+                </div>
+            </div>
+            <div class="form-row FilaFormulario pt-2">
+                <div class="form-group has-label col-xl-2 col-lg-2 col-md-2 col-5 GrupoFormulario">
+                    <label  for="comediantePersona">Comediante</label>
+                    <select id="comediantePersona" name="comediantePersona" class="form-control comediantePersona colorBorde">
+                        <option>Selecciona una opción</option>
+                    </select>
+                    <p class="error" id="comediantePersonaVal"></p>
+                </div>
+            </div>
+           <div class="form-row FilaFormulario pt-2">
+                <div class="form-group has-label col-xl-2 col-lg-2 col-md-2 col-5 GrupoFormulario">
+                    <label  for="ciudadPersona">Ciudad</label>
+                    <select id="ciudadPersona" name="ciudadPersona" class="form-control ciudadPersona colorBorde">
+                        <option>Selecciona una opción</option>
+                    </select>
+                    <p class="error" id="ciudadPersonaVal"></p>
+                </div>
+                <div class="form-group has-label col-xl-2 col-lg-2 col-md-2 col-5 GrupoFormulario">
+                    <label for="lugarPersona">Lugar</label>
+                    <select id="lugarPersona" name="lugarPersona" class="form-control lugarPersona colorBorde">
+                    </select>
+                    <p class="error" id="lugarPersonaVal"></p>
+                </div>
+            </div>
+            <div class="form-row FilaFormulario pt-2">
+                <div class="form-group has-label col-xl-2 col-lg-2 col-md-2 col-5 GrupoFormulario">
+                    <label  for="plantaPersona">Planta</label>
+                    <select id="plantaPersona" name="plantaPersona" class="form-control plantaPersona colorBorde">
+                        <option>Selecciona una opción</option>
+                    </select>
+                    <p class="error" id="plantaPersonaVal"></p>
+                </div>
+                <div class="form-group has-label col-xl-2 col-lg-2 col-md-2 col-5 GrupoFormulario">
+                    <label for="precioPersona">Precio</label>
+                    <select id="precioPersona" name="precioPersona" class="form-control precioPersona colorBorde"> 
+                    </select>
+                    <p class="error" id="precioPersonaVal"></p>
+                </div>
+            </div>
+            <div class="form-row FilaFormulario pt-2">
+                <div class="form-group has-label col-xl-2 col-lg-2 col-md-2 col-5 GrupoFormulario">
+                    <label for="fechaPersona">Fecha</label>
+                    <select id="fechaPersona" name="fechaPersona" class="form-control fechaPersona colorBorde"> 
+                        <option>Selecciona una opción</option>
+                    </select>
+                    <p class="error" id="fechaPersonaVal"></p>
+                </div>
+                <div class="form-group has-label col-xl-2 col-lg-2 col-md-2 col-5 GrupoFormulario">
+                    <label for="horaPersona">Hora</label>
+                    <select id="horaPersona" name="horaPersona" class="form-control horaPersona colorBorde"> 
+                    </select>
+                    <p class="error" id="horaPersonaVal"></p>
+                </div>
+            </div>
+            <div class="form-row BotonesFormulario pt-3 pb-5">
+                <div class="form-group col-xl-4 col-lg-4 col-md-4 col-4 BGrupoFormulario">
+                    <button type="reset" class="btn colorBotonEntrada">Restablecer</button>
+                    <div style="margin: 0 10px;"></div>
+                    <button type="submit" class="btn colorBotonEntrada">Añadir al Carrito</button>
+                </div>
+            </div>
+        </form>
+
+        <h1 id="tituloCarrito">Carrito de la Compra</h1>
+        <h1 id="tituloCarritoError"></h1>
+        <section id="tablaDatos"></section>
+
+        <h2 id="tituloEditar">Edite su Entrada</h2>
+        <form  onsubmit="return entrada.validacion2() && entrada.updateEntrada()" method="POST" name="contactForm4" class="horizontal-form FormularioHorizontal" id="formularioEntrada2">
+            <input type="hidden" id="id_entrada" name="id_entrada" class="id_entrada">
+            <div class="form-row FilaFormulario">
+                <div class="form-group has-label col-xl-2 col-lg-2 col-md-2 col-5 GrupoFormulario">
+                    <label for="nombrePersonaEdit">Nombre</label>
+                    <input type="text" id="nombrePersonaEdit" name="nombrePersonaEdit" class="form-control nombrePersonaEdit colorBorde">
+                    <p class="error" id="nombrePersonaEditVal"></p>
+                </div>
+                <div class="form-group has-label col-xl-2 col-lg-2 col-md-2 col-5 GrupoFormulario">
+                    <label for="apellidosPersonaEdit">Apellidos</label>
+                    <input type="text" id="apellidosPersonaEdit" name="apellidosPersonaEdit" class="form-control apellidosPersonaEdit colorBorde">
+                    <p class="error" id="apellidosPersonaEditVal"></p>
+                </div>
+            </div>
+            <div class="form-row FilaFormulario pt-2">
+                <div class="form-group has-label col-xl-2 col-lg-2 col-md-2 col-5 GrupoFormulario">
+                    <label  for="comediantePersonaEdit">Comediante</label>
+                    <select id="comediantePersonaEdit" name="comediantePersonaEdit" class="form-control comediantePersonaEdit colorBorde">
+                        <option>Selecciona una opción</option>
+                    </select>
+                    <p class="error" id="comediantePersonaEditVal"></p>
+                </div>
+            </div>
+           <div class="form-row FilaFormulario pt-2">
+                <div class="form-group has-label col-xl-2 col-lg-2 col-md-2 col-5 GrupoFormulario">
+                    <label  for="ciudadPersonaEdit">Ciudad</label>
+                    <select id="ciudadPersonaEdit" name="ciudadPersonaEdit" class="form-control ciudadPersonaEdit colorBorde">
+                        <option>Selecciona una opción</option>
+                    </select>
+                    <p class="error" id="ciudadPersonaEditVal"></p>
+                </div>
+                <div class="form-group has-label col-xl-2 col-lg-2 col-md-2 col-5 GrupoFormulario">
+                    <label for="lugarPersonaEdit">Lugar</label>
+                    <select id="lugarPersonaEdit" name="lugarPersonaEdit" class="form-control lugarPersonaEdit colorBorde">
+                    </select>
+                    <p class="error" id="lugarPersonaVal"></p>
+                </div>
+            </div>
+            <div class="form-row FilaFormulario pt-2">
+                <div class="form-group has-label col-xl-2 col-lg-2 col-md-2 col-5 GrupoFormulario">
+                    <label  for="plantaPersonaEdit">Planta</label>
+                    <select id="plantaPersonaEdit" name="plantaPersonaEdit" class="form-control plantaPersonaEdit colorBorde">
+                        <option>Selecciona una opción</option>
+                    </select>
+                    <p class="error" id="plantaPersonaEditVal"></p>
+                </div>
+                <div class="form-group has-label col-xl-2 col-lg-2 col-md-2 col-5 GrupoFormulario">
+                    <label for="precioPersonaEdit">Precio</label>
+                    <select id="precioPersonaEdit" name="precioPersonaEdit" class="form-control precioPersonaEdit colorBorde"> 
+                    </select>
+                    <p class="error" id="precioPersonaVal"></p>
+                </div>
+            </div>
+            <div class="form-row FilaFormulario pt-2">
+                <div class="form-group has-label col-xl-2 col-lg-2 col-md-2 col-5 GrupoFormulario">
+                    <label for="fechaPersonaEdit">Fecha</label>
+                    <select id="fechaPersonaEdit" name="fechaPersonaEdit" class="form-control fechaPersonaEdit colorBorde"> 
+                        <option>Selecciona una opción</option>
+                    </select>
+                    <p class="error" id="fechaPersonaEditVal"></p>
+                </div>
+                <div class="form-group has-label col-xl-2 col-lg-2 col-md-2 col-5 GrupoFormulario">
+                    <label for="horaPersonaEdit">Hora</label>
+                    <select id="horaPersonaEdit" name="horaPersonaEdit" class="form-control horaPersonaEdit colorBorde"> 
+                    </select>
+                    <p class="error" id="horaPersonaVal"></p>
+                </div>
+            </div>
+            <div class="form-row BotonesFormulario pt-3 pb-5">
+                <div class="form-group col-xl-4 col-lg-4 col-md-4 col-4 BGrupoFormulario">
+                    <button type="submit" class="btn colorBotonEntrada">Guardar Entrada</button>
+                </div>
+            </div>
+        </form>
+
+
+        <h1 id="tituloCarritoMensaje"></h1>
+        <div class="row " id="botonComprar">
+            <div class="col-xl-auto col-lg-auto col-md-auto col-auto pb-4 pt-3">
+                <button type="submit" class="btn colorBotonComprar" onclick="return carrito.insertEntradaEnCarrito()">Comprar</button>
+            </div>
+        </div>
+
+          
+    </div>
+
+
+    <div class="container-fluid pie" id="pie">
+        <div class="footer">
+            <div class="row justify-content-center align-items-center p-5">
+                <div class="col-xl-auto col-lg-auto col-md-auto col-auto logoPie">
+                    <a href="#"  onclick="cargarContenidoInicio()"><img src="logo.png"></a>
+                </div>
+            </div>
+
+            <div class="row justify-content-center align-items-center pb-2">
+                <hr class="lineaHorizontal">
+                    <div class="col-xl-auto col-lg-auto col-md-auto col-auto">
+                        <ul class="list-unstyled listaPie">
+                            <li><a href="https://www.exteriores.gob.es/es/Paginas/Politica-de-privacidad.aspx" target="_blank">Política de privacidad</a></li>
+                            <li><a href="https://www.bureauveritas.es/condiciones-de-uso" target="_blank">Condiciones de uso</a></li>
+                            <li><a href="https://www.hacienda.gob.es/es-ES/Paginas/Avisolegal.aspx" target="_blank">Aviso legal</a></li>
+                        </ul> 
+                    </div>
+                <hr class="lineaHorizontal">
+            </div>
+                
+
+            <div class="container pieIconos">
+                <div class="row justify-content-between align-items-center p-2">
+                    <div class="col-xl-auto col-lg-auto col-md-auto col-auto">
+                        <p class="mb-0">Copyright &copy; 2024 Stand-up.</p>
+                    </div>
+                    <div class="col-xl-auto col-lg-auto col-md-auto col-auto iconosEspacio">
+                        <a href="https://twitter.com/" target="_blank"><img src="twitter.svg" title="Twitter"></a>
+                        <a href="https://www.youtube.com/" target="_blank"><img src="youtube.svg" title="YouTube"></a>
+                        <a href="https://www.facebook.com/" target="_blank"><img src="facebook.svg" title="Facebook"></a>
+                        <a href="https://www.instagram.com/" target="_blank"><img src="instagram.svg" title="Instagram"></a>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </div>
+
+    </body>
+</html>
